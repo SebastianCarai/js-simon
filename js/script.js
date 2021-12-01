@@ -13,14 +13,16 @@ function checknumbers(){
     const rightNumbers = [];
     for (let i=0; i <5; i++){
         const userNumber = parseInt(prompt('Inserisci il numero'));
-        if (numbers.includes(userNumber)){
+        if (numbers.includes(userNumber) && (!rightNumbers.includes(userNumber))){
             rightNumbers.push(userNumber);
         }
-    } 
+    }
     if (rightNumbers.length === numbers.length){
         alert('Hai indovinato tutti i numeri. Questi sono: ' + rightNumbers);
-    } else{
-        alert('Hai indovinato ' + rightNumbers.length + ' numeri. Questi sono: ' + rightNumbers);
+    } else if (rightNumbers.length === numbers.length){
+        alert('Hai indovinato ' + rightNumbers.length + ' numero. Questo è: ' + rightNumbers);
+    } else {
+        alert('Hai indovinato ' + rightNumbers.length + ' numer. Questi sono: ' + rightNumbers);
     }
 }
 
@@ -33,5 +35,7 @@ while (numbers.length<5){
         numbers.push(singleRandomNumber);
     }
 }
-alert(numbers);
+numbers.forEach((singleNumber) => {
+    alert(singleNumber)
+})
 setTimeout(checknumbers, 30000)
